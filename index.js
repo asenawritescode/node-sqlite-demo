@@ -25,7 +25,15 @@ db.run(createtable, (err)=>{
     console.log('Created table users');
 });
 
+// Insert a row into the table
+const insert = `INSERT INTO users (number, hasPendingOrder, location, mpesaNumber) VALUES (?,?,?,?)`
 
+db.run(insert, ['+254712345678', 0, 'Nairobi', '254712345678'], (err)=>{
+    if (err) {
+        console.error(err.message);
+    }
+    console.log('Inserted a row into the table');
+});
 
 // close the database connection
 db.close((err)=>{
